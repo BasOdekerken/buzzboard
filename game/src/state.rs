@@ -1,6 +1,6 @@
 //! Game state: everything that changes during a game night.
 //!
-//! The server owns one [`GameState`], changes it only through the reducer,
+//! The server owns one [`GameState`], changes it only through the rules ([`GameState::apply`]),
 //! saves it to disk after every change and sends role-filtered views of it
 //! to the clients. Static content (boards, clues) lives in [`crate::content`].
 
@@ -32,6 +32,8 @@ pub enum Phase {
     Board,
     /// A clue is open on the TV.
     Clue(ActiveClue),
+    /// The board has ended
+    BoardEnded,
 }
 
 /// The clue that is currently open, and how far it has progressed.
@@ -41,7 +43,7 @@ pub struct ActiveClue {
     pub stage: ClueStage,
     /// Players who answered this clue wrong; they can't buzz again on it.
     /// Kept outside [`ClueStage`] so it survives every stage of the clue.
-    pub locked_out: BTreeSet<PlayerId>
+    pub answered_wrong: BTreeSet<PlayerId>,
 }
 
 /// The steps of a single clue: `Selected` → `Open` → `Revealed`.
@@ -54,11 +56,11 @@ pub enum ClueStage {
     /// The card is flipped: the question is visible and buzzers are live.
     /// `buzzes` is in arrival order; the first player in it is answering.
     /// A wrong answer removes them from here and adds them to
-    /// [`ActiveClue::locked_out`].
+    /// [`ActiveClue::answered_wrong`].
     Open { buzzes: Vec<PlayerId> },
     /// The answer is shown on the TV. The next action closes the clue
     /// and returns to the board.
-    Revealed
+    Revealed,
 }
 
 /// The complete state of a game night. This is what gets saved to disk.
@@ -111,7 +113,7 @@ mod tests {
                 stage: ClueStage::Open {
                     buzzes: vec![PlayerId(2), PlayerId(0)],
                 },
-                locked_out: BTreeSet::from([PlayerId(1)]),
+                answered_wrong: BTreeSet::from([PlayerId(1)]),
             }),
             board_index: 0,
             used_clues: BTreeSet::from([
