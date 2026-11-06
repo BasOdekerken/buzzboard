@@ -5,127 +5,127 @@
             "name": "Board 1",
             "categories": [
                 {
-                    "name": "Geography",
+                    "name": "Animals",
                     "clues": [
                         {
                             "value": 1,
-                            "question": "...",
-                            "answer": "..."
+                            "question": "Bark",
+                            "answer": "Dog"
                         },
                         {
                             "value": 2,
-                            "question": "...",
-                            "answer": "..."
+                            "question": "Meow",
+                            "answer": "Cat"
                         },
                         {
                             "value": 3,
-                            "question": "...",
-                            "answer": "..."
+                            "question": "Stripes",
+                            "answer": "Zebra"
                         },
                         {
                             "value": 4,
-                            "question": "...",
-                            "answer": "..."
+                            "question": "Trunk",
+                            "answer": "Elephant"
                         }
                     ]
                 },
                 {
-                    "name": "Grammar",
+                    "name": "Colours",
                     "clues": [
                         {
                             "value": 1,
-                            "question": "...",
-                            "answer": "..."
+                            "question": "Sky",
+                            "answer": "Blue"
                         },
                         {
                             "value": 2,
-                            "question": "...",
-                            "answer": "..."
+                            "question": "Grass",
+                            "answer": "Green"
                         },
                         {
                             "value": 3,
-                            "question": "...",
-                            "answer": "..."
+                            "question": "Banana",
+                            "answer": "Yellow"
                         },
                         {
                             "value": 4,
-                            "question": "...",
-                            "answer": "..."
+                            "question": "Coal",
+                            "answer": "Black"
                         }
                     ]
                 },
                 {
-                    "name": "Chemistry",
+                    "name": "Food",
                     "clues": [
                         {
                             "value": 1,
-                            "question": "...",
-                            "answer": "..."
+                            "question": "Bread",
+                            "answer": "Bakery"
                         },
                         {
                             "value": 2,
-                            "question": "...",
-                            "answer": "..."
+                            "question": "Cheese",
+                            "answer": "Gouda"
                         },
                         {
                             "value": 3,
-                            "question": "...",
-                            "answer": "..."
+                            "question": "Pasta",
+                            "answer": "Italy"
                         },
                         {
                             "value": 4,
-                            "question": "...",
-                            "answer": "..."
+                            "question": "Sushi",
+                            "answer": "Japan"
                         }
                     ]
                 },
                 {
-                    "name": "Random",
+                    "name": "Music",
                     "clues": [
                         {
                             "value": 1,
-                            "question": "...",
-                            "answer": "..."
+                            "question": "Piano",
+                            "answer": "Keys"
                         },
                         {
                             "value": 2,
-                            "question": "...",
-                            "answer": "..."
+                            "question": "Guitar",
+                            "answer": "Strings"
                         },
                         {
                             "value": 3,
-                            "question": "...",
-                            "answer": "..."
+                            "question": "Drum",
+                            "answer": "Beat"
                         },
                         {
                             "value": 4,
-                            "question": "...",
-                            "answer": "..."
+                            "question": "Violin",
+                            "answer": "Bow"
                         }
                     ]
                 },
                 {
-                    "name": "Trek een bak",
+                    "name": "Weather",
                     "clues": [
                         {
                             "value": 1,
-                            "question": "...",
-                            "answer": "..."
+                            "question": "Rain",
+                            "answer": "Umbrella"
                         },
                         {
                             "value": 2,
-                            "question": "...",
-                            "answer": "..."
+                            "question": "Snow",
+                            "answer": "Winter"
                         },
                         {
                             "value": 3,
-                            "question": "...",
-                            "answer": "..."
+                            "question": "Sun",
+                            "answer": "Summer"
                         },
                         {
                             "value": 4,
-                            "question": "...",
-                            "answer": "..."
+                            "question": "Thunder",
+                            "answer": "Lightning"
                         }
                     ]
                 }
@@ -135,127 +135,127 @@
             "name": "Board 2",
             "categories": [
                 {
-                    "name": "Geography 2",
+                    "name": "Planets",
                     "clues": [
                         {
                             "value": 1,
-                            "question": "...",
-                            "answer": "..."
+                            "question": "Red",
+                            "answer": "Mars"
                         },
                         {
                             "value": 2,
-                            "question": "...",
-                            "answer": "..."
+                            "question": "Rings",
+                            "answer": "Saturn"
                         },
                         {
                             "value": 3,
-                            "question": "...",
-                            "answer": "..."
+                            "question": "Biggest",
+                            "answer": "Jupiter"
                         },
                         {
                             "value": 4,
-                            "question": "...",
-                            "answer": "..."
+                            "question": "Closest",
+                            "answer": "Mercury"
                         }
                     ]
                 },
                 {
-                    "name": "Grammar 2",
+                    "name": "Sports",
                     "clues": [
                         {
                             "value": 1,
-                            "question": "...",
-                            "answer": "..."
+                            "question": "Goal",
+                            "answer": "Football"
                         },
                         {
                             "value": 2,
-                            "question": "...",
-                            "answer": "..."
+                            "question": "Hoop",
+                            "answer": "Basketball"
                         },
                         {
                             "value": 3,
-                            "question": "...",
-                            "answer": "..."
+                            "question": "Racket",
+                            "answer": "Tennis"
                         },
                         {
                             "value": 4,
-                            "question": "...",
-                            "answer": "..."
+                            "question": "Puck",
+                            "answer": "Hockey"
                         }
                     ]
                 },
                 {
-                    "name": "Chemistry 2",
+                    "name": "Cities",
                     "clues": [
                         {
                             "value": 1,
-                            "question": "...",
-                            "answer": "..."
+                            "question": "Tower",
+                            "answer": "Paris"
                         },
                         {
                             "value": 2,
-                            "question": "...",
-                            "answer": "..."
+                            "question": "Canals",
+                            "answer": "Amsterdam"
                         },
                         {
                             "value": 3,
-                            "question": "...",
-                            "answer": "..."
+                            "question": "Colosseum",
+                            "answer": "Rome"
                         },
                         {
                             "value": 4,
-                            "question": "...",
-                            "answer": "..."
+                            "question": "Big Ben",
+                            "answer": "London"
                         }
                     ]
                 },
                 {
-                    "name": "Random 2",
+                    "name": "Numbers",
                     "clues": [
                         {
                             "value": 1,
-                            "question": "...",
-                            "answer": "..."
+                            "question": "Dozen",
+                            "answer": "Twelve"
                         },
                         {
                             "value": 2,
-                            "question": "...",
-                            "answer": "..."
+                            "question": "Pair",
+                            "answer": "Two"
                         },
                         {
                             "value": 3,
-                            "question": "...",
-                            "answer": "..."
+                            "question": "Century",
+                            "answer": "Hundred"
                         },
                         {
                             "value": 4,
-                            "question": "...",
-                            "answer": "..."
+                            "question": "Score",
+                            "answer": "Twenty"
                         }
                     ]
                 },
                 {
-                    "name": "Trek een bak 2",
+                    "name": "Elements",
                     "clues": [
                         {
                             "value": 1,
-                            "question": "...",
-                            "answer": "..."
+                            "question": "H",
+                            "answer": "Hydrogen"
                         },
                         {
                             "value": 2,
-                            "question": "...",
-                            "answer": "..."
+                            "question": "O",
+                            "answer": "Oxygen"
                         },
                         {
                             "value": 3,
-                            "question": "...",
-                            "answer": "..."
+                            "question": "Fe",
+                            "answer": "Iron"
                         },
                         {
                             "value": 4,
-                            "question": "...",
-                            "answer": "..."
+                            "question": "Au",
+                            "answer": "Gold"
                         }
                     ]
                 }
