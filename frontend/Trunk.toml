@@ -1,0 +1,11 @@
+[build]
+target = "index.html"
+dist = "dist"
+
+[serve]
+port = 8080
+
+# Forward the WebSocket to the axum server during development.
+[[proxy]]
+backend = "ws://127.0.0.1:3000/ws"
+ws = true

@@ -1,0 +1,265 @@
+{
+    "name": "Game night",
+    "boards": [
+        {
+            "name": "Board 1",
+            "categories": [
+                {
+                    "name": "Geography",
+                    "clues": [
+                        {
+                            "value": 1,
+                            "question": "...",
+                            "answer": "..."
+                        },
+                        {
+                            "value": 2,
+                            "question": "...",
+                            "answer": "..."
+                        },
+                        {
+                            "value": 3,
+                            "question": "...",
+                            "answer": "..."
+                        },
+                        {
+                            "value": 4,
+                            "question": "...",
+                            "answer": "..."
+                        }
+                    ]
+                },
+                {
+                    "name": "Grammar",
+                    "clues": [
+                        {
+                            "value": 1,
+                            "question": "...",
+                            "answer": "..."
+                        },
+                        {
+                            "value": 2,
+                            "question": "...",
+                            "answer": "..."
+                        },
+                        {
+                            "value": 3,
+                            "question": "...",
+                            "answer": "..."
+                        },
+                        {
+                            "value": 4,
+                            "question": "...",
+                            "answer": "..."
+                        }
+                    ]
+                },
+                {
+                    "name": "Chemistry",
+                    "clues": [
+                        {
+                            "value": 1,
+                            "question": "...",
+                            "answer": "..."
+                        },
+                        {
+                            "value": 2,
+                            "question": "...",
+                            "answer": "..."
+                        },
+                        {
+                            "value": 3,
+                            "question": "...",
+                            "answer": "..."
+                        },
+                        {
+                            "value": 4,
+                            "question": "...",
+                            "answer": "..."
+                        }
+                    ]
+                },
+                {
+                    "name": "Random",
+                    "clues": [
+                        {
+                            "value": 1,
+                            "question": "...",
+                            "answer": "..."
+                        },
+                        {
+                            "value": 2,
+                            "question": "...",
+                            "answer": "..."
+                        },
+                        {
+                            "value": 3,
+                            "question": "...",
+                            "answer": "..."
+                        },
+                        {
+                            "value": 4,
+                            "question": "...",
+                            "answer": "..."
+                        }
+                    ]
+                },
+                {
+                    "name": "Trek een bak",
+                    "clues": [
+                        {
+                            "value": 1,
+                            "question": "...",
+                            "answer": "..."
+                        },
+                        {
+                            "value": 2,
+                            "question": "...",
+                            "answer": "..."
+                        },
+                        {
+                            "value": 3,
+                            "question": "...",
+                            "answer": "..."
+                        },
+                        {
+                            "value": 4,
+                            "question": "...",
+                            "answer": "..."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Board 2",
+            "categories": [
+                {
+                    "name": "Geography 2",
+                    "clues": [
+                        {
+                            "value": 1,
+                            "question": "...",
+                            "answer": "..."
+                        },
+                        {
+                            "value": 2,
+                            "question": "...",
+                            "answer": "..."
+                        },
+                        {
+                            "value": 3,
+                            "question": "...",
+                            "answer": "..."
+                        },
+                        {
+                            "value": 4,
+                            "question": "...",
+                            "answer": "..."
+                        }
+                    ]
+                },
+                {
+                    "name": "Grammar 2",
+                    "clues": [
+                        {
+                            "value": 1,
+                            "question": "...",
+                            "answer": "..."
+                        },
+                        {
+                            "value": 2,
+                            "question": "...",
+                            "answer": "..."
+                        },
+                        {
+                            "value": 3,
+                            "question": "...",
+                            "answer": "..."
+                        },
+                        {
+                            "value": 4,
+                            "question": "...",
+                            "answer": "..."
+                        }
+                    ]
+                },
+                {
+                    "name": "Chemistry 2",
+                    "clues": [
+                        {
+                            "value": 1,
+                            "question": "...",
+                            "answer": "..."
+                        },
+                        {
+                            "value": 2,
+                            "question": "...",
+                            "answer": "..."
+                        },
+                        {
+                            "value": 3,
+                            "question": "...",
+                            "answer": "..."
+                        },
+                        {
+                            "value": 4,
+                            "question": "...",
+                            "answer": "..."
+                        }
+                    ]
+                },
+                {
+                    "name": "Random 2",
+                    "clues": [
+                        {
+                            "value": 1,
+                            "question": "...",
+                            "answer": "..."
+                        },
+                        {
+                            "value": 2,
+                            "question": "...",
+                            "answer": "..."
+                        },
+                        {
+                            "value": 3,
+                            "question": "...",
+                            "answer": "..."
+                        },
+                        {
+                            "value": 4,
+                            "question": "...",
+                            "answer": "..."
+                        }
+                    ]
+                },
+                {
+                    "name": "Trek een bak 2",
+                    "clues": [
+                        {
+                            "value": 1,
+                            "question": "...",
+                            "answer": "..."
+                        },
+                        {
+                            "value": 2,
+                            "question": "...",
+                            "answer": "..."
+                        },
+                        {
+                            "value": 3,
+                            "question": "...",
+                            "answer": "..."
+                        },
+                        {
+                            "value": 4,
+                            "question": "...",
+                            "answer": "..."
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
