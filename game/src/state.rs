@@ -13,9 +13,9 @@ use crate::content::ClueId;
 /// Stable identifier for a player. Not an index into [`GameState::players`],
 /// so it stays valid if a player is removed.
 #[derive(Debug, Serialize, Deserialize, Copy, Clone, Eq, PartialEq, PartialOrd, Ord, Hash)]
-pub struct PlayerId(u32);
+pub struct PlayerId(pub u32);
 
-#[derive(Debug, Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord, Clone)]
+#[derive(Debug, Serialize, Deserialize, PartialEq, Eq, Clone)]
 pub struct Player {
     pub id: PlayerId,
     pub name: String,
@@ -24,7 +24,7 @@ pub struct Player {
 }
 
 /// Where we are in the game night.
-#[derive(Debug, Serialize, Deserialize, Eq, PartialEq, PartialOrd, Ord, Clone)]
+#[derive(Debug, Serialize, Deserialize, Eq, PartialEq, Clone)]
 pub enum Phase {
     /// Entering player names, before the first board.
     Setup,
@@ -35,7 +35,7 @@ pub enum Phase {
 }
 
 /// The clue that is currently open, and how far it has progressed.
-#[derive(Debug, Serialize, Deserialize, Eq, PartialEq, PartialOrd, Ord, Clone)]
+#[derive(Debug, Serialize, Deserialize, Eq, PartialEq, Clone)]
 pub struct ActiveClue {
     pub id: ClueId,
     pub stage: ClueStage,
@@ -46,7 +46,7 @@ pub struct ActiveClue {
 
 /// The steps of a single clue: `Selected` → `Open` → `Revealed`.
 /// A Daily Double goes through the same steps; only its scoring differs.
-#[derive(Debug, Serialize, Deserialize, Eq, PartialEq, PartialOrd, Ord, Clone)]
+#[derive(Debug, Serialize, Deserialize, Eq, PartialEq, Clone)]
 pub enum ClueStage {
     /// The card is zoomed in on the TV, showing only its value (or the
     /// Daily Double animation). The question is hidden and buzzers are locked.
@@ -62,7 +62,7 @@ pub enum ClueStage {
 }
 
 /// The complete state of a game night. This is what gets saved to disk.
-#[derive(Debug, Serialize, Deserialize, Eq, PartialEq, PartialOrd, Ord, Clone)]
+#[derive(Debug, Serialize, Deserialize, Eq, PartialEq, Clone)]
 pub struct GameState {
     /// In join order; this is also the order of the score bar.
     pub players: Vec<Player>,
