@@ -70,7 +70,12 @@ pub enum ContentError {
     EmptyCategory { board: usize, category: usize },
     /// A category has a different number of clues than the first category
     /// on its board. `expected` is taken from that first category.
-    UnevenCategory { board: usize, category: usize, expected: usize, found: usize},
+    UnevenCategory {
+        board: usize,
+        category: usize,
+        expected: usize,
+        found: usize,
+    },
     /// A clue's question is empty or only whitespace.
     EmptyQuestion(ClueId),
     /// A clue's answer is empty or only whitespace.
@@ -119,16 +124,20 @@ impl Game {
                     return Err(ContentError::UnevenCategory {
                         board: b,
                         category: c,
-                        expected: expected,
-                        found: category.clues.len()
-                    })
+                        expected,
+                        found: category.clues.len(),
+                    });
                 }
                 for (r, clue) in category.clues.iter().enumerate() {
-                    let clue_id = ClueId { board: b, category: c, row: r };
+                    let clue_id = ClueId {
+                        board: b,
+                        category: c,
+                        row: r,
+                    };
                     if clue.question.trim().is_empty() {
                         return Err(ContentError::EmptyQuestion(clue_id));
                     }
-                    
+
                     if clue.answer.trim().is_empty() {
                         return Err(ContentError::EmptyAnswer(clue_id));
                     }
@@ -197,7 +206,10 @@ mod tests {
     fn validate_rejects_broken_content() {
         let cases: Vec<(fn(&mut Game), ContentError)> = vec![
             (|g| g.name = "   ".into(), ContentError::EmptyGameName),
-            (|g| g.boards.clear(), ContentError::InvalidBoardCount { found: 0 }),
+            (
+                |g| g.boards.clear(),
+                ContentError::InvalidBoardCount { found: 0 },
+            ),
             (
                 |g| g.boards.push(g.boards[0].clone()),
                 ContentError::InvalidBoardCount { found: 3 },
