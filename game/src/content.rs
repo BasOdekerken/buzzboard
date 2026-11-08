@@ -93,6 +93,33 @@ impl Game {
             .get(id.row)
     }
 
+    /// Tiles on `board` that may hold the Daily Double: every tile except the
+    /// top (cheapest) row. A category with fewer than 2 clues allows all its
+    /// rows, so a board always has at least one candidate. Empty only if the
+    /// board doesn't exist.
+    ///
+    /// The server picks one of these at random; keeping the randomness out
+    /// of here makes the rule testable.
+    pub fn daily_double_candidates(&self, board: usize) -> Vec<ClueId> {
+        let Some(categories) = self.boards.get(board).map(|b| &b.categories) else {
+            return Vec::new();
+        };
+
+        let mut candidates = Vec::new();
+        for (category, cat) in categories.iter().enumerate() {
+            let rows = cat.clues.len();
+            let first_row = if rows >= 2 { 1 } else { 0 };
+            for row in first_row..rows {
+                candidates.push(ClueId {
+                    board,
+                    category,
+                    row,
+                });
+            }
+        }
+        candidates
+    }
+
     /// Checks that the content is playable. Stops at the first problem found.
     ///
     /// Checks run in order: game name, board count, then per board: has
@@ -271,6 +298,82 @@ mod tests {
             let mut game = sample();
             break_it(&mut game);
             assert_eq!(game.validate(), Err(expected), "case failed");
+        }
+    }
+
+    // --- daily_double_candidates ---
+
+    #[test]
+    fn daily_double_candidates_skip_the_top_row() {
+        // Sample: 5 categories × 4 clues, so rows 1..4 in each category.
+        let game = sample();
+        let candidates = game.daily_double_candidates(1);
+        assert_eq!(candidates.len(), 5 * 3);
+        for id in &candidates {
+            assert_eq!(id.board, 1);
+            assert_ne!(id.row, 0, "top row offered: {id:?}");
+            assert!(game.clue(*id).is_some(), "candidate doesn't exist: {id:?}");
+        }
+        for category in 0..5 {
+            for row in 1..4 {
+                let id = ClueId {
+                    board: 1,
+                    category,
+                    row,
+                };
+                assert!(candidates.contains(&id), "missing {id:?}");
+            }
+        }
+    }
+
+    #[test]
+    fn daily_double_candidates_empty_for_missing_board() {
+        assert!(sample().daily_double_candidates(2).is_empty());
+    }
+
+    #[test]
+    fn daily_double_candidates_allow_top_row_when_only_one_clue() {
+        let mut game = sample();
+        for category in &mut game.boards[0].categories {
+            category.clues.truncate(1);
+        }
+        let candidates = game.daily_double_candidates(0);
+        let expected: Vec<ClueId> = (0..5)
+            .map(|category| ClueId {
+                board: 0,
+                category,
+                row: 0,
+            })
+            .collect();
+        assert_eq!(candidates, expected);
+    }
+
+    #[test]
+    fn every_candidate_is_accepted_by_start_board() {
+        use crate::actions::Action;
+        use crate::state::GameState;
+
+        let game = sample();
+        for board in 0..game.boards.len() {
+            for daily_double in game.daily_double_candidates(board) {
+                let mut state = GameState::new();
+                assert!(state.apply(
+                    &game,
+                    Action::AddPlayer {
+                        name: "Anna".into()
+                    }
+                ));
+                assert!(
+                    state.apply(
+                        &game,
+                        Action::StartBoard {
+                            board,
+                            daily_double
+                        }
+                    ),
+                    "StartBoard rejected candidate {daily_double:?}"
+                );
+            }
         }
     }
 }

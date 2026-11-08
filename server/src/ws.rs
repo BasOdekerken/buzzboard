@@ -15,9 +15,10 @@ use game::{
     actions::Action,
     view::{Role, view_for},
 };
+use rand::seq::IndexedRandom;
 use serde::Deserialize;
 
-use crate::session::Shared;
+use crate::session::{Session, Shared};
 
 /// Query string of `/ws`. An unknown role is rejected by axum with a 400.
 #[derive(Debug, Deserialize)]
@@ -33,6 +34,9 @@ enum ClientMessage {
     Action(Action),
     /// Restore the state from before the last accepted change.
     Undo,
+    /// Start this board; the server picks the Daily Double at random
+    /// (see `Game::daily_double_candidates`).
+    StartBoard { board: usize },
 }
 
 /// How many states undo can go back.
@@ -117,18 +121,7 @@ fn handle_message(session: &Shared, text: &str) {
     let session = &mut *guard;
 
     match message {
-        ClientMessage::Action(action) => {
-            // Keep the old state; it goes on the undo stack only if the
-            // action was accepted, so ignored actions leave no undo step.
-            let before = session.state.clone();
-            if session.state.apply(&session.game, action) {
-                session.undo.push_back(before);
-                if session.undo.len() > UNDO_DEPTH {
-                    session.undo.pop_front();
-                }
-                session.changed();
-            }
-        }
+        ClientMessage::Action(action) => apply(session, action),
         ClientMessage::Undo => {
             // Empty history: nothing to undo, nothing to send.
             if let Some(previous) = session.undo.pop_back() {
@@ -136,5 +129,33 @@ fn handle_message(session: &Shared, text: &str) {
                 session.changed();
             }
         }
+        ClientMessage::StartBoard { board } => {
+            let candidates = session.game.daily_double_candidates(board);
+            // No candidates: the board doesn't exist. Nothing to do.
+            let Some(&daily_double) = candidates.choose(&mut rand::rng()) else {
+                return;
+            };
+            apply(
+                session,
+                Action::StartBoard {
+                    board,
+                    daily_double,
+                },
+            );
+        }
+    }
+}
+
+/// Applies an action through the rules. If it was accepted: keep the old
+/// state for undo (capped at `UNDO_DEPTH`), save, and notify everyone.
+/// Ignored actions leave no undo step and send nothing.
+fn apply(session: &mut Session, action: Action) {
+    let before = session.state.clone();
+    if session.state.apply(&session.game, action) {
+        session.undo.push_back(before);
+        if session.undo.len() > UNDO_DEPTH {
+            session.undo.pop_front();
+        }
+        session.changed();
     }
 }
