@@ -98,6 +98,7 @@ fn setup_shows_name_and_players() {
     for role in [Role::Host, Role::Display] {
         let view = view(&state, role);
         assert_eq!(view.game_name, "Game night");
+        assert_eq!(view.board_names, ["Board 1", "Board 2"]);
         assert_eq!(view.players, state.players);
         assert_eq!(view.phase, ViewPhase::Setup);
     }

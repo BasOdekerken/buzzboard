@@ -31,6 +31,8 @@ pub enum Role {
 #[derive(Serialize, Deserialize, Debug, Clone, PartialEq)]
 pub struct View {
     pub game_name: String,
+    /// Names of all boards in the game, in order: what the host can start.
+    pub board_names: Vec<String>,
     /// Same for every role: names and scores are public.
     pub players: Vec<Player>,
     pub phase: ViewPhase,
@@ -110,6 +112,7 @@ pub fn view_for(game: &Game, state: &GameState, role: Role) -> View {
 
     View {
         game_name: game.name.clone(),
+        board_names: game.boards.iter().map(|b| b.name.clone()).collect(),
         phase,
         players: state.players.clone(),
     }

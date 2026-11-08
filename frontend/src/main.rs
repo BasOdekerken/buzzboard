@@ -1,8 +1,13 @@
+mod connection;
+mod host;
+
 use leptos::prelude::*;
 use leptos_router::{
     components::{Route, Router, Routes},
     path,
 };
+
+use crate::host::Host;
 
 fn main() {
     console_error_panic_hook::set_once();
@@ -15,7 +20,7 @@ fn App() -> impl IntoView {
         <Router>
             <Routes fallback=|| "Not found">
                 <Route path=path!("/display") view=|| view! { <h1>"Display"</h1> } />
-                <Route path=path!("/host") view=|| view! { <h1>"Host"</h1> } />
+                <Route path=path!("/host") view=Host />
                 <Route path=path!("/play") view=|| view! { <h1>"Play"</h1> } />
             </Routes>
         </Router>

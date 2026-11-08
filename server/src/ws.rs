@@ -13,6 +13,7 @@ use axum::{
 };
 use game::{
     actions::Action,
+    protocol::ClientMessage,
     view::{Role, view_for},
 };
 use rand::seq::IndexedRandom;
@@ -24,19 +25,6 @@ use crate::session::{Session, Shared};
 #[derive(Debug, Deserialize)]
 pub struct WsParams {
     role: Role,
-}
-
-/// What the host phone can send, as JSON:
-/// `{"Action": {"AddPlayer": {"name": "Anna"}}}` or `"Undo"`.
-#[derive(Deserialize)]
-enum ClientMessage {
-    /// A game action, applied through the rules.
-    Action(Action),
-    /// Restore the state from before the last accepted change.
-    Undo,
-    /// Start this board; the server picks the Daily Double at random
-    /// (see `Game::daily_double_candidates`).
-    StartBoard { board: usize },
 }
 
 /// How many states undo can go back.
