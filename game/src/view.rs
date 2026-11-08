@@ -17,7 +17,8 @@ use crate::{
 };
 
 /// Who is looking. Player phones (phase 2) will get their own small view.
-#[derive(Serialize, Deserialize, Debug, Clone, PartialEq)]
+#[derive(Serialize, Deserialize, Debug, Clone, PartialEq, Copy)]
+#[serde(rename_all = "lowercase")]
 pub enum Role {
     /// The host phone (/host): sees everything, including answers and
     /// where the Daily Double is.

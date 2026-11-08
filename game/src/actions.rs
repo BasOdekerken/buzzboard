@@ -7,9 +7,11 @@
 //! An action that doesn't fit the current phase or stage (a late buzz, a
 //! double tap on ✗) is ignored rather than treated as a bug.
 
+use serde::{Deserialize, Serialize};
+
 use crate::{content::ClueId, state::PlayerId};
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum Action {
     // --- Setup ---
     /// Adds a player with score 0. Setup only.
